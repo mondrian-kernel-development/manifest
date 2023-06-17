@@ -1,37 +1,37 @@
-Open Source Kernel for Xiaomi 12 and Xiaomi 12 Pro
+Open Source Kernel for POCO F5 PRO
 =========================================
 
-The Xiaomi 12 and Xiaomi 12 Pro were released at the 31st December 2021.
-Fortunately Xiaomi has released the kernel sources with the release of the devices but unfortunately these released sources are incomplete. This Project aims at providing the missing sources and enables developers and enthusiats to get an easy start to compile a kernel for the Xiaomi 12 and/or Xiaomi 12 Pro.
+The XPOCO F5 PRO were released at the 10 may 2023.
+Fortunately Xiaomi has released the kernel sources with the release of the devices but unfortunately these released sources are incomplete. This Project aims at providing the missing sources and enables developers and enthusiats to get an easy start to compile a kernel for the POCO F5 PRO
 
 ## How to build the kernel
 1. Intitalize your local repository using this manifest:
 ```
-repo init -u https://github.com/xiaomi-sm8450-kernel/manifest.git -b zeus-s-oss
+repo init -u https://github.com/mondrian-kernel-development.git -b mondrian-s-oss
 ```
 2. Then to sync up:
 ```
 repo sync
 ```
-3. Run the kernel build for your device. E.g for cupid:
+3. Run the kernel build for your device. E.g for mondrian:
 ```
-./build.sh cupid
+./build.sh mondrian
 ```
-4. Find the build artifacts in `device/qcom/cupid-kernel/`. This includes the kernel (Image), the kernel modules, dtb and dtbo, kernel headers and some host utilities.
+4. Find the build artifacts in `device/qcom/mondrian-kernel/`. This includes the kernel (Image), the kernel modules, dtb and dtbo, kernel headers and some host utilities.
 
 ## What is missing in the official sources?
 The official kernel sources insist of the following repositories:
-- [Xiaomi_Kernel_Opensource](https://github.com/MiCode/Xiaomi_Kernel_OpenSource/commits/zeus-s-oss)
+- [Xiaomi_Kernel_Opensource](https://github.com/MiCode/Xiaomi_Kernel_OpenSource/commits/mondrian-s-oss)
 This repository contains xiaomis fork of the msm-kernel and the camera-kernel and display-drivers techpack repositories.
-- [vendor_qcom_opensource_audio-kernel](https://github.com/MiCode/vendor_qcom_opensource_audio-kernel/tree/zeus-s-oss)
+- [vendor_qcom_opensource_audio-kernel](https://github.com/MiCode/vendor_qcom_opensource_audio-kernel/tree/mondrian-s-oss)
 This repository contains xiaomis fork of the qualcomm audio-kernel-ar repository.
-- [vendor_qcom_opensource_wlan](https://github.com/MiCode/vendor_qcom_opensource_wlan/tree/zeus-s-oss)
+- [vendor_qcom_opensource_wlan](https://github.com/MiCode/vendor_qcom_opensource_wlan/tree/mondrian-s-oss)
 This repository contains xiaomis forks of the qualcomm qcacld-3.0, qca-wifi-host-cmn, fw-api and sigma-dut repositories.
-- [kernel_devicetree](https://github.com/MiCode/kernel_devicetree/tree/zeus-s-oss)
+- [kernel_devicetree](https://github.com/MiCode/kernel_devicetree/tree/mondrian-s-oss)
 This repository contains xiaomis forks of the proprietary qualcomm devicetree, camera-devicetree and display-devicetree.
 
 Starting with the msm-kernel xiaomi has added their own hwid driver, which is used in kernel to differentiate between different xiaomi devices, to the .gitingore file in the repository and hence the whole source code of this driver is missing. [reference](https://github.com/MiCode/Xiaomi_Kernel_OpenSource/blob/7d10d738b2c4299f3b8549c61a01ece39f19c788/.gitignore#L169)
-Xiaomi is using an own driver for their touchfeature implementation and they are using a custom fts_spi kernel driver for the touchscreen but the inclusion of these drivers is commented. This indicates that xiaomi has moved these drivers to an external repository which they did not provide the source for. Both drivers source code is present in the kernel tree (although it's not being used due to the commented out inclusion) but unfortunately it is not the source being used on MIUI releases. The xiaomi touch driver on the [oldest miui i could find](https://bigota.d.miui.com/V13.0.12.0.SLCCNXM/cupid_images_V13.0.12.0.SLCCNXM_20211229.0000.00_12.0_cn_6c8fd3679d.tgz) is already significantly ahead of the public drivers state (E.g. /sys/devices/virtual/touch/touch_dev/fod_press_status is provided by the xiaomi touch driver on MIUI but the public driver does not provide a similar functionality). The FTS touchscreen driver is also behind the one shipped on MIUI and some basic functionality is broken (E.g. double tap to wake is broken). [reference](https://github.com/MiCode/Xiaomi_Kernel_OpenSource/blob/7d10d738b2c4299f3b8549c61a01ece39f19c788/drivers/input/touchscreen/Makefile#L118-L119)
+Xiaomi is using an own driver for their touchfeature implementation and they are using a custom fts_spi kernel driver for the touchscreen but the inclusion of these drivers is commented. This indicates that xiaomi has moved these drivers to an external repository which they did not provide the source for. Both drivers source code is present in the kernel tree (although it's not being used due to the commented out inclusion) but unfortunately it is not the source being used on MIUI releases.
 
 Xiaomi does not provide the source code of many used qualcomm external kernel module repositories. Namely these are: [mmrm-driver](https://git.codelinaro.org/clo/la/platform/vendor/opensource/mmrm-driver), [mmrm-driver-test](https://git.codelinaro.org/clo/la/platform/vendor/opensource/mmrm-driver-test), [video-driver](https://git.codelinaro.org/clo/la/platform/vendor/opensource/video-driver), [video-driver-test](https://git.codelinaro.org/clo/la/platform/vendor/opensource/video-driver-test), [cvp-kernel](https://git.codelinaro.org/clo/la/platform/vendor/opensource/cvp-kernel), [dataipa](https://git.codelinaro.org/clo/la/platform/vendor/opensource/dataipa), [eva-kernel](https://git.codelinaro.org/clo/la/platform/vendor/opensource/eva-kernel), [touch-drivers](https://git.codelinaro.org/clo/la/platform/vendor/opensource/touch-drivers), [datarmnet](https://git.codelinaro.org/clo/la/platform/vendor/qcom/opensource/datarmnet) and [datarmnet-ext](https://git.codelinaro.org/clo/la/platform/vendor/qcom/opensource/datarmnet-ext).
 These repositories might not have been changed by xiaomi but since their kernel is based on a pre-public caf tag one has to guess the used revision of all these repositories.
