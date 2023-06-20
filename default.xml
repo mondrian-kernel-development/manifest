@@ -6,7 +6,7 @@
 
   <!-- Kernel platform manifest -->
   <project name="android_kernel_platform_build" path="kernel_platform/build" upstream="refs/heads/kernel.lnx.5.10.r1-rel" remote="mondrian-kernel-development"/>
-  <project groups="qki" name="kernel/common" path="kernel_platform/common" revision="061410a787bbe35cea1e70c63daf597323f8cd2c" upstream="refs/heads/ks-kernel.lnx.1.0.r1-rel"/>
+  <project groups="qki" name="mondrian_kernel_common" path="kernel_platform/common" revision="android12-5.10" remote="mondrian-kernel-development"/>
   <project name="android_kernel_xiaomi_mondrian" path="kernel_platform/msm-kernel" upstream="refs/heads/kernel.lnx.5.10.r1-rel" remote="mondrian-kernel-development">
     <linkfile dest="kernel_platform/common/build.config.msm.waipio" src="build.config.msm.waipio"/>
     <linkfile dest="kernel_platform/common/build.config.msm.waipio.tuivm" src="build.config.msm.waipio.tuivm"/>
@@ -39,11 +39,11 @@
     <linkfile dest="vendor/qcom/defs/product-defs/vendor/mmrm_kernel_product.mk" src="mmrm_kernel_product.mk"/>
   </project>
   <project groups="cyborg" name="platform/vendor/opensource/mmrm-driver-test" path="vendor/qcom/opensource/mmrm-driver/test" revision="920386f7e50c59310fb0eaecadaae8268582a46d" upstream="refs/heads/mmrm-kernel-waipio.lnx.1.0.r2-rel"/>
-  <project groups="cyborg" name="android_vendor_qcom_opensource_video-driver" path="vendor/qcom/opensource/video-driver" upstream="refs/heads/video-kernel-waipio.lnx.1.0.r2-rel" remote="mondrian-kernel-development">
+  <!--<project groups="cyborg" name="android_vendor_qcom_opensource_video-driver" path="vendor/qcom/opensource/video-driver" upstream="refs/heads/video-kernel-waipio.lnx.1.0.r2-rel" remote="mondrian-kernel-development">
     <linkfile dest="vendor/qcom/defs/product-defs/vendor/video_kernel_product.mk" src="video_kernel_product.mk"/>
     <linkfile dest="vendor/qcom/defs/board-defs/vendor/video_kernel_board.mk" src="video_kernel_board.mk"/>
   </project>
-  <project groups="cyborg" name="platform/vendor/opensource/video-driver-test" path="vendor/qcom/opensource/video-driver/test" revision="66256693d2930b5846686fa1894fd42e8b7b8d5a" upstream="refs/heads/video-kernel-waipio.lnx.1.0.r2-rel"/>
+  <project groups="cyborg" name="platform/vendor/opensource/video-driver-test" path="vendor/qcom/opensource/video-driver/test" revision="66256693d2930b5846686fa1894fd42e8b7b8d5a" upstream="refs/heads/video-kernel-waipio.lnx.1.0.r2-rel"/>-->
 
   <!-- Vendor manifest -->
   <project name="platform/vendor/opensource/cvp-kernel" path="vendor/qcom/opensource/cvp-kernel" revision="c49e27c5985ffa103bde09d0de6786f7ac1d8597" upstream="refs/heads/cvp-kernel.lnx.1.0.r1-rel">
@@ -83,5 +83,6 @@
   <!-- Build script -->
   <project name="kernel_platform_script" path="kernel_platform/script" remote="mondrian-kernel-development">
     <linkfile dest="build.sh" src="build.sh"/>
+    <linkfile dest="build_gki.sh" src="build_gki.sh"/>
   </project>
 </manifest>
