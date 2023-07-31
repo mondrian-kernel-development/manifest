@@ -7,11 +7,11 @@
   <!-- Kernel platform manifest -->
   <project name="android_kernel_platform_build" path="kernel_platform/build" upstream="refs/heads/kernel.lnx.5.10.r1-rel" remote="mondrian-kernel-development"/>
   <project groups="qki" name="mondrian_kernel_common" path="kernel_platform/common" revision="android12-5.10" remote="mondrian-kernel-development"/>
-  <project name="android_kernel_xiaomi_mondrian" path="kernel_platform/msm-kernel" upstream="refs/heads/kernel.lnx.5.10.r1-rel" remote="mondrian-kernel-development">
+  <project name="android_kernel_xiaomi_diting" path="kernel_platform/msm-kernel" upstream="refs/heads/kernel.lnx.5.10.r1-rel" remote="mondrian-kernel-development" revision="diting-s-oss">
     <linkfile dest="kernel_platform/common/build.config.msm.waipio" src="build.config.msm.waipio"/>
     <linkfile dest="kernel_platform/common/build.config.msm.waipio.tuivm" src="build.config.msm.waipio.tuivm"/>
-    <linkfile dest="kernel_platform/common/build.config.msm.mondrian" src="build.config.msm.mondrian"/>
-    <linkfile dest="kernel_platform/common/build.config.msm.mondrian.tuivm" src="build.config.msm.mondrian.tuivm"/>
+    <linkfile dest="kernel_platform/common/build.config.msm.diting" src="build.config.msm.diting"/>
+    <linkfile dest="kernel_platform/common/build.config.msm.diting.tuivm" src="build.config.msm.diting.tuivm"/>
   </project>
   <project name="kernel/prebuilts/build-tools" path="kernel_platform/prebuilts/kernel-build-tools" revision="10ab783184f77d3ea15bf666426a7138b0f62bfc" upstream="refs/heads/ks-kernel.lnx.1.0.r1-rel"/>
   <project name="kernel_platform/external/dtc" revision="b5a44a6e8c72c9fc5d72c6cff09ee3b9a86da769" upstream="refs/heads/kernel.build.lnx.1.0.r1-rel"/>
@@ -74,8 +74,8 @@
   </project>
 
   <!-- Proprietary -->
-  <project name="android_vendor_qcom_proprietary_audio-devicetree" path="vendor/qcom/proprietary/audio-devicetree" remote="mondrian-kernel-development"/>
-  <project name="android_vendor_qcom_proprietary_camera-devicetree" path="vendor/qcom/proprietary/camera-devicetree" remote="mondrian-kernel-development"/>
+  <!--<project name="android_vendor_qcom_proprietary_audio-devicetree" path="vendor/qcom/proprietary/audio-devicetree" remote="mondrian-kernel-development"/>
+  <project name="android_vendor_qcom_proprietary_camera-devicetree" path="vendor/qcom/proprietary/camera-devicetree" remote="mondrian-kernel-development"/>-->
   <!--<project name="android_vendor_qcom_proprietary_display-devicetree" path="vendor/qcom/proprietary/display-devicetree" remote="mondrian-kernel-development"/>-->
   <project name="android_vendor_qcom_proprietary_mmrm-devicetree" path="vendor/qcom/proprietary/mmrm-devicetree" remote="mondrian-kernel-development"/>
   <!--<project name="android_vendor_qcom_proprietary_video-devicetree" path="vendor/qcom/proprietary/video-devicetree" remote="mondrian-kernel-development"/>-->
